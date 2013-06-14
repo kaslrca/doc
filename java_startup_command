@@ -1,0 +1,19 @@
+*JAVA指令說明*
+-server 指示JAVA以伺服器模式執行(只有64位元適用)
+-XX:ParallelGCThreads=4 指示JAVA同一時間用多少處理執行緒垃圾回收
+-Xincgc 指示垃圾回收不斷進行 而不是停頓來進行一次性清理
+-XX:+UseConcMarkSweepGC 指示垃圾回收和伺服器核心同時進行
+-XX:+UseParNewGC 指示使用新版垃圾回收 有更好的效能
+-XX:+CMSIncrementalPacing 指示伺服器執行時 根據收集的數據自動調節所佔空間比率
+-XX:+AggressiveOpts 增加編譯的速度
+-XX:+CMSParallelRemarkEnabled 使用UseParNewGC的參數下 儘量減少 mark 的時間
+-XX:+DisableExplicitGC 禁止全面性垃圾回收呼叫 (減少每隔一段時間的伺服器短暫停頓)
+-XX:MaxGCPauseMillis=500 限制垃圾回收最大的暫停毫秒數
+-XX:SurvivorRatio=16 調整JAVA程序新生代與舊代的比率
+-XX:TargetSurvivorRatio=90 設定JAVA程序新生代比率
+-XX:+UseAdaptiveGCBoundary 允許垃圾回收依據情況需要在程序新生代與舊代之間移轉 (提升性能)
+-XX:-UseGCOverheadLimit 禁止JAVA花費大量時間只為了釋放一點點空間
+-Xnoclassgc 命令記憶體存放區填滿之後 禁止停頓進行大規模垃圾回收 而是開新空間
+-XX:UseSSE=3 指示JAVA編譯器操作處理器的調整 (數值會自動降低直到符合使用者的處理器)
+-XX:PermSize=128m 指示伺服器一開始執行時的永久可用記憶體區域
+-XX:LargePageSizeInBytes=4m 記憶體分頁的大小 (概念和磁碟區叢集很像 數值小 效率高)
